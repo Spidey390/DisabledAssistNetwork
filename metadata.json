@@ -1,0 +1,8 @@
+{
+  "name": "DisabledAssistNetwork",
+  "description": "A localized assistance platform connecting persons with disabilities and residents with nearby community volunteers for everyday tasks.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
