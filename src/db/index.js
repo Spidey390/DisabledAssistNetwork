@@ -25,7 +25,7 @@ if (!getApps().length) {
       try {
         const sa = JSON.parse(fs.readFileSync(p, "utf8"));
         certConfig = cert(sa);
-        if (!projectId && sa.project_id) {
+        if (sa.project_id) {
           projectId = sa.project_id;
         }
         break;
