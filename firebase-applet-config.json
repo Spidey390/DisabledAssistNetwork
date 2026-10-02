@@ -1,11 +1,11 @@
 {
-  "projectId": "defectguard-d3b12",
-  "appId": "1:583616966603:web:b4ef7cbcb92541abc92b59",
-  "apiKey": "AIzaSyByTcjxPtnSF4qZJ4ebxR6-9Zfo1XRQJ3w",
-  "authDomain": "defectguard-d3b12.firebaseapp.com",
-  "storageBucket": "defectguard-d3b12.firebasestorage.app",
-  "messagingSenderId": "583616966603",
-  "measurementId": "",
+  "projectId": "disabledassistnetwork",
+  "appId": "1:339347449525:web:10264d135ed34349e880fc",
+  "apiKey": "AIzaSyCaBrQ_Pz2RaSNomZtofPSmgsUmz-XcVwc",
+  "authDomain": "disabledassistnetwork.firebaseapp.com",
+  "storageBucket": "disabledassistnetwork.firebasestorage.app",
+  "messagingSenderId": "339347449525",
+  "measurementId": "G-7PDSK652RT",
   "oAuthClientId": "",
   "recaptchaSiteKey": ""
 }
