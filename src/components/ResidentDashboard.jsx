@@ -36,6 +36,7 @@ import VideoCall from "./VideoCall.jsx";
 import ChatPanel from "./ChatPanel.jsx";
 import VoiceRequest from "./VoiceRequest.jsx";
 import { useLanguage } from "../context/LanguageContext.jsx";
+import { apiUrl } from "../config.js";
 
 export const REQUEST_CATEGORIES = [
   {
@@ -233,7 +234,7 @@ export default function ResidentDashboard({ user, tasks, onReload, onLogout, soc
     try {
       const activeUserId = user?.id || user?.uid || "resident-1";
       const targetLang = appLanguage === "ta" ? "ta-IN" : "en-IN";
-      const res = await fetch("/api/tasks/ai-parse", {
+      const res = await fetch(apiUrl("/api/tasks/ai-parse"), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -272,7 +273,7 @@ export default function ResidentDashboard({ user, tasks, onReload, onLogout, soc
 
     try {
       const activeUserId = user?.id || user?.uid || "resident-1";
-      const response = await fetch("/api/tasks", {
+      const response = await fetch(apiUrl("/api/tasks"), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -351,7 +352,7 @@ export default function ResidentDashboard({ user, tasks, onReload, onLogout, soc
     setSubmittingTask(true);
     setError("");
     try {
-      const response = await fetch("/api/tasks", {
+      const response = await fetch(apiUrl("/api/tasks"), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -381,7 +382,7 @@ export default function ResidentDashboard({ user, tasks, onReload, onLogout, soc
   const handleCancelTask = async (taskId) => {
     if (!window.confirm("Are you sure you want to cancel this request?")) return;
     try {
-      const response = await fetch(`/api/tasks/${taskId}/cancel`, {
+      const response = await fetch(apiUrl(`/api/tasks/${taskId}/cancel`), {
         method: "POST",
         headers: { Authorization: `Bearer mock-${user.id}` }
       });
@@ -397,7 +398,7 @@ export default function ResidentDashboard({ user, tasks, onReload, onLogout, soc
   const handleCompleteTask = async (taskId) => {
     if (!window.confirm("Mark this task as fully completed?")) return;
     try {
-      const response = await fetch(`/api/tasks/${taskId}/complete`, {
+      const response = await fetch(apiUrl(`/api/tasks/${taskId}/complete`), {
         method: "POST",
         headers: { Authorization: `Bearer mock-${user.id}` }
       });
@@ -415,7 +416,7 @@ export default function ResidentDashboard({ user, tasks, onReload, onLogout, soc
     const reason = window.prompt("Reason for flagging this request/volunteer:");
     if (!reason) return;
     try {
-      const response = await fetch("/api/admin/flags", {
+      const response = await fetch(apiUrl("/api/admin/flags"), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -437,7 +438,7 @@ export default function ResidentDashboard({ user, tasks, onReload, onLogout, soc
 
     setSubmittingRating(true);
     try {
-      const response = await fetch("/api/ratings", {
+      const response = await fetch(apiUrl("/api/ratings"), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

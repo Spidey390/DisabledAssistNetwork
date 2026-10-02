@@ -9,6 +9,7 @@ import CompleteProfileForm from "./components/CompleteProfileForm.jsx";
 import VideoCall from "./components/VideoCall.jsx";
 import LanguageToggle from "./components/LanguageToggle.jsx";
 import { useLanguage } from "./context/LanguageContext.jsx";
+import { API_BASE_URL, apiUrl } from "./config.js";
 
 export default function App() {
   const { t } = useLanguage();
@@ -29,7 +30,8 @@ export default function App() {
 
   // Initialize Socket.IO connection
   useEffect(() => {
-    const socketInstance = io(window.location.origin, {
+    const socketEndpoint = API_BASE_URL || window.location.origin;
+    const socketInstance = io(socketEndpoint, {
       transports: ["websocket", "polling"],
       autoConnect: true
     });
@@ -58,7 +60,7 @@ export default function App() {
 
   const fetchResidentTasks = async (userId) => {
     try {
-      const response = await fetch("/api/tasks/my-tasks", {
+      const response = await fetch(apiUrl("/api/tasks/my-tasks"), {
         headers: { Authorization: `Bearer mock-${userId}` }
       });
       if (response.ok) {
@@ -74,7 +76,7 @@ export default function App() {
     setLoading(true);
     setError("");
     try {
-      const response = await fetch("/api/auth/me", {
+      const response = await fetch(apiUrl("/api/auth/me"), {
         headers: { Authorization: `Bearer mock-${userId}` }
       });
       if (!response.ok) throw new Error("We couldn't load your profile. Please try again.");

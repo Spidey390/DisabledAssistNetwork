@@ -5,6 +5,7 @@ import { SKILL_OPTIONS } from "./RegisterModal.jsx";
 import VideoCall from "./VideoCall.jsx";
 import ChatPanel from "./ChatPanel.jsx";
 import { useLanguage } from "../context/LanguageContext.jsx";
+import { apiUrl } from "../config.js";
 
 
 
@@ -72,7 +73,7 @@ export default function VolunteerDashboard({ user, onReload, socket }) {
     setError("");
     try {
       // 1. Fetch Feed
-      const feedRes = await fetch("/api/tasks/feed", {
+      const feedRes = await fetch(apiUrl("/api/tasks/feed"), {
         headers: { Authorization: `Bearer mock-${user.id}` }
       });
       const feedData = await feedRes.json();
@@ -83,7 +84,7 @@ export default function VolunteerDashboard({ user, onReload, socket }) {
       }
 
       // 2. Fetch My Claimed Tasks
-      const myRes = await fetch("/api/tasks/my-tasks", {
+      const myRes = await fetch(apiUrl("/api/tasks/my-tasks"), {
         headers: { Authorization: `Bearer mock-${user.id}` }
       });
       const myData = await myRes.json();
@@ -118,7 +119,7 @@ export default function VolunteerDashboard({ user, onReload, socket }) {
     if (!window.confirm("Are you sure you want to claim this task? Please ensure you are available to assist now.")) return;
 
     try {
-      const response = await fetch(`/api/tasks/${taskId}/claim`, {
+      const response = await fetch(apiUrl(`/api/tasks/${taskId}/claim`), {
         method: "POST",
         headers: { Authorization: `Bearer mock-${user.id}` }
       });
@@ -144,7 +145,7 @@ export default function VolunteerDashboard({ user, onReload, socket }) {
     if (!window.confirm(t("confirmReleaseTask") || "Emergency: Are you sure you want to cancel this claim? The task will be redirected to surrounding nearby volunteers.")) return;
 
     try {
-      const response = await fetch(`/api/tasks/${taskId}/release`, {
+      const response = await fetch(apiUrl(`/api/tasks/${taskId}/release`), {
         method: "POST",
         headers: { Authorization: `Bearer mock-${user.id}` }
       });
@@ -175,7 +176,7 @@ export default function VolunteerDashboard({ user, onReload, socket }) {
   const handleCompleteTask = async (taskId) => {
     if (!window.confirm("Mark this task as fully completed?")) return;
     try {
-      const response = await fetch(`/api/tasks/${taskId}/complete`, {
+      const response = await fetch(apiUrl(`/api/tasks/${taskId}/complete`), {
         method: "POST",
         headers: { Authorization: `Bearer mock-${user.id}` }
       });
@@ -202,7 +203,7 @@ export default function VolunteerDashboard({ user, onReload, socket }) {
     const reason = window.prompt("Reason for flagging this request/resident:");
     if (!reason) return;
     try {
-      const response = await fetch("/api/admin/flags", {
+      const response = await fetch(apiUrl("/api/admin/flags"), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -232,7 +233,7 @@ export default function VolunteerDashboard({ user, onReload, socket }) {
     setProfileMessage("");
 
     try {
-      const response = await fetch("/api/ratings/profile", {
+      const response = await fetch(apiUrl("/api/ratings/profile"), {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -265,7 +266,7 @@ export default function VolunteerDashboard({ user, onReload, socket }) {
 
     setSubmittingRating(true);
     try {
-      const response = await fetch("/api/ratings", {
+      const response = await fetch(apiUrl("/api/ratings"), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

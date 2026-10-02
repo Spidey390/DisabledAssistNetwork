@@ -12,6 +12,7 @@ import {
   Info,
   X
 } from "lucide-react";
+import { apiUrl } from "../config.js";
 
 export default function AdminConsole({ user }) {
   const { t } = useLanguage();
@@ -34,7 +35,7 @@ export default function AdminConsole({ user }) {
   // Load functions
   const loadPendingUsers = async () => {
     try {
-      const res = await fetch("/api/admin/pending-users", {
+      const res = await fetch(apiUrl("/api/admin/pending-users"), {
         headers: { Authorization: `Bearer mock-${user.id}` }
       });
       const data = await res.json();
@@ -46,7 +47,7 @@ export default function AdminConsole({ user }) {
 
   const loadFlags = async () => {
     try {
-      const res = await fetch("/api/admin/flags", {
+      const res = await fetch(apiUrl("/api/admin/flags"), {
         headers: { Authorization: `Bearer mock-${user.id}` }
       });
       const data = await res.json();
@@ -58,7 +59,7 @@ export default function AdminConsole({ user }) {
 
   const loadAuditLogs = async (search = "") => {
     try {
-      const res = await fetch(`/api/admin/audit-log?search=${encodeURIComponent(search)}`, {
+      const res = await fetch(apiUrl(`/api/admin/audit-log?search=${encodeURIComponent(search)}`), {
         headers: { Authorization: `Bearer mock-${user.id}` }
       });
       const data = await res.json();
@@ -70,7 +71,7 @@ export default function AdminConsole({ user }) {
 
   const loadAllUsers = async () => {
     try {
-      const resUsers = await fetch("/api/auth/demo-users", {
+      const resUsers = await fetch(apiUrl("/api/auth/demo-users"), {
         headers: { Authorization: `Bearer mock-${user.id}` }
       });
       const dataUsers = await resUsers.json();
@@ -82,7 +83,7 @@ export default function AdminConsole({ user }) {
 
   const loadStats = async () => {
     try {
-      const res = await fetch("/api/admin/stats", {
+      const res = await fetch(apiUrl("/api/admin/stats"), {
         headers: { Authorization: `Bearer mock-${user.id}` }
       });
       const data = await res.json();
@@ -104,7 +105,7 @@ export default function AdminConsole({ user }) {
 
   const handleVerifyUser = async (targetId, decision) => {
     try {
-      const res = await fetch(`/api/admin/users/${targetId}/verify`, {
+      const res = await fetch(apiUrl(`/api/admin/users/${targetId}/verify`), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -125,7 +126,7 @@ export default function AdminConsole({ user }) {
 
   const handleAssignFlag = async (flagId) => {
     try {
-      const res = await fetch(`/api/admin/flags/${flagId}/assign`, {
+      const res = await fetch(apiUrl(`/api/admin/flags/${flagId}/assign`), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -144,7 +145,7 @@ export default function AdminConsole({ user }) {
 
   const handleResolveFlag = async (flagId) => {
     try {
-      const res = await fetch(`/api/admin/flags/${flagId}/resolve`, {
+      const res = await fetch(apiUrl(`/api/admin/flags/${flagId}/resolve`), {
         method: "POST",
         headers: { Authorization: `Bearer mock-${user.id}` }
       });
@@ -192,7 +193,7 @@ export default function AdminConsole({ user }) {
     }
 
     try {
-      const res = await fetch(`/api/admin/users/${erasureTargetUser.id}/erasure`, {
+      const res = await fetch(apiUrl(`/api/admin/users/${erasureTargetUser.id}/erasure`), {
         method: "POST",
         headers: { Authorization: `Bearer mock-${user.id}` }
       });

@@ -20,6 +20,7 @@ import {
   CheckCircle2,
   Plus
 } from "lucide-react";
+import { apiUrl } from "../config.js";
 
 export default function CompleteProfileForm({ user, onComplete }) {
   const { t } = useLanguage();
@@ -139,7 +140,7 @@ export default function CompleteProfileForm({ user, onComplete }) {
       }
       formData.append("identityProof", identityProof);
 
-      const response = await fetch("/api/auth/complete-profile", {
+      const response = await fetch(apiUrl("/api/auth/complete-profile"), {
         method: "POST",
         headers: {
           Authorization: `Bearer mock-${user.id}`

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { MessageCircle, Send, X, ChevronDown } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext.jsx";
+import { apiUrl } from "../config.js";
 
 export default function ChatPanel({ socket, taskId, userId, userName, userRole, remoteUserName, isOpen, onToggle }) {
   const { t } = useLanguage();
@@ -30,7 +31,7 @@ export default function ChatPanel({ socket, taskId, userId, userName, userRole, 
     const fetchMessages = async (showLoading = false) => {
       if (showLoading) setLoading(true);
       try {
-        const res = await fetch(`/api/chat/${taskId}/messages`, {
+        const res = await fetch(apiUrl(`/api/chat/${taskId}/messages`), {
           headers: { Authorization: `Bearer mock-${userId}` }
         });
         if (res.ok && isSubscribed) {
@@ -147,7 +148,7 @@ export default function ChatPanel({ socket, taskId, userId, userName, userRole, 
     setMessages((prev) => [...prev, newMsg]);
 
     try {
-      const res = await fetch(`/api/chat/${taskId}/messages`, {
+      const res = await fetch(apiUrl(`/api/chat/${taskId}/messages`), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

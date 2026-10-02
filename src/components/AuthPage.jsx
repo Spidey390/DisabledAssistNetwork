@@ -22,6 +22,7 @@ import {
   Lightbulb,
   Monitor
 } from "lucide-react";
+import { apiUrl } from "../config.js";
 
 export const SKILL_OPTIONS = [
   "Health & Medicine",
@@ -73,7 +74,7 @@ export default function AuthPage({ onAuthSuccess, onBackToHome, initialTab = "lo
     setLoginError("");
 
     try {
-      const res = await fetch("/api/auth/send-otp", {
+      const res = await fetch(apiUrl("/api/auth/send-otp"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ phoneNumber: loginPhone.trim() })
@@ -107,7 +108,7 @@ export default function AuthPage({ onAuthSuccess, onBackToHome, initialTab = "lo
     setSignupError("");
 
     try {
-      const res = await fetch("/api/auth/send-otp", {
+      const res = await fetch(apiUrl("/api/auth/send-otp"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ phoneNumber: signupPhone.trim() })
@@ -148,7 +149,7 @@ export default function AuthPage({ onAuthSuccess, onBackToHome, initialTab = "lo
 
     try {
       // 1. Real 6-Digit OTP Verification
-      const verifyRes = await fetch("/api/auth/verify-otp", {
+      const verifyRes = await fetch(apiUrl("/api/auth/verify-otp"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ phoneNumber: loginPhone.trim(), otpCode: loginOtp.trim() })
@@ -159,7 +160,7 @@ export default function AuthPage({ onAuthSuccess, onBackToHome, initialTab = "lo
       }
 
       // 2. Perform Login
-      const response = await fetch("/api/auth/login", {
+      const response = await fetch(apiUrl("/api/auth/login"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ phoneNumber: loginPhone.trim() })
@@ -200,7 +201,7 @@ export default function AuthPage({ onAuthSuccess, onBackToHome, initialTab = "lo
 
     try {
       // 1. Real 6-Digit OTP Verification
-      const verifyRes = await fetch("/api/auth/verify-otp", {
+      const verifyRes = await fetch(apiUrl("/api/auth/verify-otp"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ phoneNumber: signupPhone.trim(), otpCode: otp.trim() })
@@ -219,7 +220,7 @@ export default function AuthPage({ onAuthSuccess, onBackToHome, initialTab = "lo
         role,
       };
 
-      const response = await fetch("/api/auth/register", {
+      const response = await fetch(apiUrl("/api/auth/register"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)

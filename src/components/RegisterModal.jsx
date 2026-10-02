@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { CheckCircle2, HeartHandshake, Home, AlertTriangle, Check, X } from "lucide-react";
+import { apiUrl } from "../config.js";
 
 export const SKILL_OPTIONS = [
   "Health & Medicine",
@@ -33,7 +34,7 @@ export default function RegisterModal({ onClose, onRegisterSuccess }) {
     setError("");
 
     try {
-      const res = await fetch("/api/auth/send-otp", {
+      const res = await fetch(apiUrl("/api/auth/send-otp"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ phoneNumber: phoneNumber.trim() })
@@ -70,7 +71,7 @@ export default function RegisterModal({ onClose, onRegisterSuccess }) {
 
     try {
       // 1. Verify Real 6-Digit OTP Code
-      const verifyRes = await fetch("/api/auth/verify-otp", {
+      const verifyRes = await fetch(apiUrl("/api/auth/verify-otp"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ phoneNumber: phoneNumber.trim(), otpCode: otp.trim() })
@@ -83,7 +84,7 @@ export default function RegisterModal({ onClose, onRegisterSuccess }) {
 
       // 2. Complete Profile Registration
       const randomId = "custom-" + Math.random().toString(36).substr(2, 9);
-      const response = await fetch("/api/auth/register", {
+      const response = await fetch(apiUrl("/api/auth/register"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

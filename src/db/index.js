@@ -13,24 +13,41 @@ if (!getApps().length) {
     delete process.env.GOOGLE_APPLICATION_CREDENTIALS;
   }
 
-  // Try finding service-account.json
-  const possiblePaths = [
-    process.env.GOOGLE_APPLICATION_CREDENTIALS,
-    path.resolve(process.cwd(), "service-account.json"),
-    path.resolve(process.cwd(), "..", "service-account.json"),
-  ].filter(Boolean);
+  // 1. Check if raw JSON string is provided in environment variables (for Render, Railway, etc.)
+  const rawSaEnv = process.env.FIREBASE_SERVICE_ACCOUNT || process.env.FIREBASE_SERVICE_ACCOUNT_JSON || process.env.GOOGLE_CREDENTIALS;
+  if (rawSaEnv) {
+    try {
+      const sa = typeof rawSaEnv === "string" ? JSON.parse(rawSaEnv) : rawSaEnv;
+      certConfig = cert(sa);
+      if (sa.project_id) {
+        projectId = sa.project_id;
+      }
+    } catch (err) {
+      console.warn("Could not parse service account from environment variable:", err.message);
+    }
+  }
 
-  for (const p of possiblePaths) {
-    if (fs.existsSync(p)) {
-      try {
-        const sa = JSON.parse(fs.readFileSync(p, "utf8"));
-        certConfig = cert(sa);
-        if (sa.project_id) {
-          projectId = sa.project_id;
+  // 2. Try finding service-account.json from file paths
+  if (!certConfig) {
+    const possiblePaths = [
+      process.env.GOOGLE_APPLICATION_CREDENTIALS,
+      "/etc/secrets/service-account.json",
+      path.resolve(process.cwd(), "service-account.json"),
+      path.resolve(process.cwd(), "..", "service-account.json"),
+    ].filter(Boolean);
+
+    for (const p of possiblePaths) {
+      if (fs.existsSync(p)) {
+        try {
+          const sa = JSON.parse(fs.readFileSync(p, "utf8"));
+          certConfig = cert(sa);
+          if (sa.project_id) {
+            projectId = sa.project_id;
+          }
+          break;
+        } catch (err) {
+          console.warn("Could not parse service account file at:", p);
         }
-        break;
-      } catch (err) {
-        console.warn("Could not parse service account file at:", p);
       }
     }
   }
