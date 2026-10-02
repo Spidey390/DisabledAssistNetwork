@@ -43,10 +43,12 @@ if (!getApps().length) {
     options.projectId = projectId;
   }
 
-  initializeApp(options);
+  const app = initializeApp(options);
+  console.log(`[Firebase Admin] Initialized with project ID: ${projectId || "default"}`);
 }
 
 export const db = getFirestore();
+console.log(`[Firestore DB] Connected to project: ${db.projectId}`);
 
 // Export Collection References
 export const usersCol = db.collection("users");
