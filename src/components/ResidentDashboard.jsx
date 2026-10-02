@@ -25,7 +25,12 @@ import {
   Car,
   Smartphone,
   HeartHandshake,
-  Siren
+  Siren,
+  AlertTriangle,
+  Globe,
+  Tag,
+  Zap,
+  Pencil
 } from "lucide-react";
 import VideoCall from "./VideoCall.jsx";
 import ChatPanel from "./ChatPanel.jsx";
@@ -618,7 +623,7 @@ export default function ResidentDashboard({ user, tasks, onReload, onLogout, soc
 
             {aiError && (
               <div className="bg-red-50 border-l-4 border-red-500 text-red-950 p-3 rounded-xl text-xs font-bold flex items-center gap-2">
-                <span>⚠️</span>
+                <AlertTriangle size={16} className="text-red-600 shrink-0" />
                 <span>{aiError}</span>
               </div>
             )}
@@ -719,23 +724,26 @@ export default function ResidentDashboard({ user, tasks, onReload, onLogout, soc
                   {aiParsedResult.detectedLanguage && (
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-emerald-200/60 pb-3">
                       <span className="text-xs font-bold text-gray-500 uppercase">Detected Speaking Language</span>
-                      <span className="text-xs font-black text-emerald-950 bg-emerald-100/90 px-3 py-1 rounded-full border border-emerald-300">
-                        🌐 {aiParsedResult.detectedLanguage}
+                      <span className="text-xs font-black text-emerald-950 bg-emerald-100/90 px-3 py-1 rounded-full border border-emerald-300 inline-flex items-center gap-1.5">
+                        <Globe size={13} className="text-emerald-800" />
+                        <span>{aiParsedResult.detectedLanguage}</span>
                       </span>
                     </div>
                   )}
 
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-emerald-200/60 pb-3">
                     <span className="text-xs font-bold text-gray-500 uppercase">Detected Category</span>
-                    <span className="text-sm font-black text-[#263c2e] bg-white px-3 py-1 rounded-full border border-emerald-300 shadow-2xs">
-                      🏷️ {aiParsedResult.category}
+                    <span className="text-sm font-black text-[#263c2e] bg-white px-3 py-1 rounded-full border border-emerald-300 shadow-2xs inline-flex items-center gap-1.5">
+                      <Tag size={14} className="text-emerald-700" />
+                      <span>{aiParsedResult.category}</span>
                     </span>
                   </div>
 
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-emerald-200/60 pb-3">
                     <span className="text-xs font-bold text-gray-500 uppercase">Urgency Priority</span>
-                    <span className={`text-xs font-black px-3 py-1 rounded-full uppercase ${getUrgencyBadgeClass(aiParsedResult.urgency)}`}>
-                      ⚡ {aiParsedResult.urgency} Priority
+                    <span className={`text-xs font-black px-3 py-1 rounded-full uppercase inline-flex items-center gap-1.5 ${getUrgencyBadgeClass(aiParsedResult.urgency)}`}>
+                      <Zap size={13} />
+                      <span>{aiParsedResult.urgency} Priority</span>
                     </span>
                   </div>
 
@@ -751,9 +759,10 @@ export default function ResidentDashboard({ user, tasks, onReload, onLogout, soc
                   <button
                     type="button"
                     onClick={() => setAiParsedResult(null)}
-                    className="py-3.5 px-5 bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 rounded-2xl text-sm font-bold transition-all cursor-pointer"
+                    className="py-3.5 px-5 bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 rounded-2xl text-sm font-bold transition-all cursor-pointer inline-flex items-center justify-center gap-2"
                   >
-                    ✏️ Edit Input
+                    <Pencil size={15} />
+                    <span>Edit Input</span>
                   </button>
 
                   <button
@@ -769,7 +778,8 @@ export default function ResidentDashboard({ user, tasks, onReload, onLogout, soc
                       </>
                     ) : (
                       <>
-                        <span>🚀 Confirm & Post Request Now</span>
+                        <Send size={18} />
+                        <span>Confirm & Post Request Now</span>
                       </>
                     )}
                   </button>
@@ -837,8 +847,9 @@ export default function ResidentDashboard({ user, tasks, onReload, onLogout, soc
             </div>
 
             {error &&
-              <div className="bg-red-50 border-l-4 border-red-500 text-red-950 p-4 rounded text-base font-bold">
-                ⚠️ {error}
+              <div className="bg-red-50 border-l-4 border-red-500 text-red-950 p-4 rounded text-base font-bold flex items-center gap-2">
+                <AlertTriangle size={20} className="text-red-600 shrink-0" />
+                <span>{error}</span>
               </div>
             }
 
@@ -877,8 +888,9 @@ export default function ResidentDashboard({ user, tasks, onReload, onLogout, soc
             </div>
 
             {error &&
-              <div className="bg-red-50 border-l-4 border-red-500 text-red-950 p-4 rounded text-base font-bold">
-                ⚠️ {error}
+              <div className="bg-red-50 border-l-4 border-red-500 text-red-950 p-4 rounded text-base font-bold flex items-center gap-2">
+                <AlertTriangle size={20} className="text-red-600 shrink-0" />
+                <span>{error}</span>
               </div>
             }
 
@@ -886,36 +898,45 @@ export default function ResidentDashboard({ user, tasks, onReload, onLogout, soc
               <button
                 type="button"
                 onClick={() => setUrgency("Low")}
-                className={`p-6 rounded-2xl border-2 font-black text-lg transition-all ${urgency === "Low" ?
+                className={`p-6 rounded-2xl border-2 font-black text-lg transition-all text-left ${urgency === "Low" ?
                     "border-green-600 bg-green-50 text-green-950 shadow-sm" :
                     "border-gray-200 hover:border-gray-300 text-gray-700"}`
                 }>
 
-                🟢 Low Urgency
+                <div className="flex items-center gap-2">
+                  <span className="w-3.5 h-3.5 rounded-full bg-green-500 inline-block shrink-0"></span>
+                  <span>Low Urgency</span>
+                </div>
                 <span className="block text-xs font-normal text-gray-500 mt-1">Can wait a few days</span>
               </button>
 
               <button
                 type="button"
                 onClick={() => setUrgency("Medium")}
-                className={`p-6 rounded-2xl border-2 font-black text-lg transition-all ${urgency === "Medium" ?
+                className={`p-6 rounded-2xl border-2 font-black text-lg transition-all text-left ${urgency === "Medium" ?
                     "border-amber-600 bg-amber-50 text-amber-950 shadow-sm" :
                     "border-gray-200 hover:border-gray-300 text-gray-700"}`
                 }>
 
-                🟡 Medium Urgency
+                <div className="flex items-center gap-2">
+                  <span className="w-3.5 h-3.5 rounded-full bg-amber-500 inline-block shrink-0"></span>
+                  <span>Medium Urgency</span>
+                </div>
                 <span className="block text-xs font-normal text-gray-500 mt-1">Needed within 24 hours</span>
               </button>
 
               <button
                 type="button"
                 onClick={() => setUrgency("High")}
-                className={`p-6 rounded-2xl border-2 font-black text-lg transition-all ${urgency === "High" ?
+                className={`p-6 rounded-2xl border-2 font-black text-lg transition-all text-left ${urgency === "High" ?
                     "border-red-600 bg-red-50 text-red-950 shadow-sm" :
                     "border-gray-200 hover:border-gray-300 text-gray-700"}`
                 }>
 
-                🔴 High Urgency
+                <div className="flex items-center gap-2">
+                  <span className="w-3.5 h-3.5 rounded-full bg-red-500 inline-block shrink-0"></span>
+                  <span>High Urgency</span>
+                </div>
                 <span className="block text-xs font-normal text-gray-500 mt-1">Needed immediately today</span>
               </button>
             </div>
@@ -1005,7 +1026,8 @@ export default function ResidentDashboard({ user, tasks, onReload, onLogout, soc
               {selectedTask.status === "Assigned" &&
                 <div className="bg-amber-50 border-2 border-amber-200 rounded-xl p-5 space-y-3">
                   <h4 className="text-xl font-black text-amber-950 flex items-center gap-2">
-                    🤝 Neighbor Assigned to Help
+                    <HeartHandshake size={24} className="text-amber-800 shrink-0" />
+                    <span>Neighbor Assigned to Help</span>
                   </h4>
                   <p className="text-lg text-amber-900 font-medium">
                     Our neighborhood volunteer <strong>{selectedTask.volunteerName || "Alice Green"}</strong> is on the way!
@@ -1059,7 +1081,8 @@ export default function ResidentDashboard({ user, tasks, onReload, onLogout, soc
               {selectedTask.status === "Completed" &&
                 <div className="bg-green-50/50 border-2 border-green-200 rounded-xl p-6 space-y-4">
                   <h4 className="text-xl font-black text-green-950 flex items-center gap-2">
-                    🌟 Rate Your Helper neighbor
+                    <Star size={22} className="fill-amber-400 text-amber-500 shrink-0" />
+                    <span>Rate Your Helper neighbor</span>
                   </h4>
                   {ratingSubmitted ?
                     <div className="bg-green-100 text-green-950 border border-green-300 p-4 rounded-xl text-base font-bold text-center">

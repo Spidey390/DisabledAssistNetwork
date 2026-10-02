@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CompleteProfileForm from "./CompleteProfileForm";
-import { Star, ShieldAlert, Phone, CheckCircle2, Compass, MapPin, Search, Check, RefreshCw, MessageCircle, Video } from "lucide-react";
+import { Star, ShieldAlert, Phone, CheckCircle2, Compass, MapPin, Search, Check, RefreshCw, MessageCircle, Video, Sparkles, X, AlertCircle, AlertTriangle } from "lucide-react";
 import { SKILL_OPTIONS } from "./RegisterModal.jsx";
 import VideoCall from "./VideoCall.jsx";
 import ChatPanel from "./ChatPanel.jsx";
@@ -245,15 +245,15 @@ export default function VolunteerDashboard({ user, onReload, socket }) {
       });
 
       if (response.ok) {
-        setProfileMessage("✅ Preferences saved successfully!");
+        setProfileMessage({ type: "success", text: "Preferences saved successfully!" });
         fetchFeedAndClaims();
         onReload();
       } else {
         const data = await response.json();
-        setProfileMessage("❌ Error: " + data.error);
+        setProfileMessage({ type: "error", text: data.error || "Failed to save preferences." });
       }
     } catch (err) {
-      setProfileMessage("❌ Error: " + err.message);
+      setProfileMessage({ type: "error", text: err.message || "Failed to save preferences." });
     } finally {
       setProfileSaving(false);
     }
@@ -396,8 +396,9 @@ export default function VolunteerDashboard({ user, onReload, socket }) {
                 }>
                 
                         {task.isSkillMatch &&
-                <span className="absolute top-3 right-3 bg-emerald-100 text-emerald-950 font-black text-xs py-1 px-2.5 rounded-full uppercase border border-emerald-300 tracking-wider">
-                            ⭐ {t("skillMatch")}
+                <span className="absolute top-3 right-3 bg-emerald-100 text-emerald-950 font-black text-xs py-1 px-2.5 rounded-full uppercase border border-emerald-300 tracking-wider inline-flex items-center gap-1">
+                            <Sparkles size={13} className="text-amber-600 shrink-0" />
+                            <span>{t("skillMatch")}</span>
                           </span>
                 }
 
@@ -594,11 +595,20 @@ export default function VolunteerDashboard({ user, onReload, socket }) {
                   <h3 className="text-2xl font-black text-gray-950">{t("preferences")}</h3>
                 </div>
 
-                {profileMessage &&
-            <div className="bg-amber-50 border-l-4 border-amber-500 text-amber-950 p-4 rounded text-base font-bold">
-                    {profileMessage}
+                {profileMessage && (
+                  <div className={`p-4 rounded-xl text-base font-bold flex items-center gap-2 border-l-4 ${
+                    profileMessage.type === "success"
+                      ? "bg-emerald-50 border-emerald-500 text-emerald-950"
+                      : "bg-red-50 border-red-500 text-red-950"
+                  }`}>
+                    {profileMessage.type === "success" ? (
+                      <CheckCircle2 size={18} className="text-emerald-600 shrink-0" />
+                    ) : (
+                      <AlertCircle size={18} className="text-red-600 shrink-0" />
+                    )}
+                    <span>{profileMessage.text}</span>
                   </div>
-            }
+                )}
 
                 {/* Preferences Field 1: Skills tags multi-select */}
                 <div className="space-y-2">
@@ -664,8 +674,9 @@ export default function VolunteerDashboard({ user, onReload, socket }) {
               <h3 className="text-lg font-black">{selectedTask.category === "Groceries" ? t("catGroceries") : selectedTask.category === "Medicine & Pharmacy" ? t("catMedicine") : selectedTask.category === "Transportation" ? t("catTransportation") : selectedTask.category === "Household Help" ? t("catHousehold") : selectedTask.category === "Tech Support" ? t("catTech") : selectedTask.category === "Companionship" ? t("catCompanionship") : selectedTask.category}</h3>
               <button
               onClick={() => setSelectedTask(null)}
-              className="text-white/80 hover:text-white transition-colors text-2xl font-bold focus:outline-none">
-                ×
+              className="text-white/80 hover:text-white transition-colors focus:outline-none p-1 cursor-pointer"
+              aria-label="Close">
+                <X size={20} />
               </button>
             </div>
 
@@ -720,8 +731,9 @@ export default function VolunteerDashboard({ user, onReload, socket }) {
                       className="pointer-events-none w-full h-full"
                     />
                     <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors flex items-end p-2 bg-gradient-to-t from-black/60 to-transparent">
-                      <span className="text-white text-[11px] font-bold flex items-center gap-1 bg-black/60 px-2 py-1 rounded">
-                        🧭 {t("clickMapToNavigate")}
+                      <span className="text-white text-[11px] font-bold flex items-center gap-1.5 bg-black/60 px-2 py-1 rounded">
+                        <Compass size={13} className="text-white shrink-0" />
+                        <span>{t("clickMapToNavigate")}</span>
                       </span>
                     </div>
                   </div>
@@ -731,12 +743,12 @@ export default function VolunteerDashboard({ user, onReload, socket }) {
               <div className="flex gap-3 pt-2">
                 <button
                 onClick={() => setSelectedTask(null)}
-                className="flex-1 py-3.5 px-4 bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold text-sm rounded-xl transition-all">
+                className="flex-1 py-3.5 px-4 bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold text-sm rounded-xl transition-all cursor-pointer">
                   {t("close")}
                 </button>
                 <button
                 onClick={() => handleClaimTask(selectedTask.id)}
-                className="flex-1 py-3.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-black text-sm rounded-xl shadow-md transition-all">
+                className="flex-1 py-3.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-black text-sm rounded-xl shadow-md transition-all cursor-pointer">
                   {t("acceptTask")}
                 </button>
               </div>
@@ -750,7 +762,8 @@ export default function VolunteerDashboard({ user, onReload, socket }) {
       <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="bg-white w-full max-w-md rounded-2xl shadow-xl overflow-hidden animate-fade-in p-6 space-y-4">
             <h4 className="text-xl font-black text-emerald-950 flex items-center gap-2">
-              🌟 {t("rating")}
+              <Star size={20} className="fill-amber-400 text-amber-500 shrink-0" />
+              <span>{t("rating")}</span>
             </h4>
             <div className="flex gap-2 pt-2">
               <button

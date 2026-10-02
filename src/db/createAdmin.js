@@ -1,7 +1,7 @@
 import "dotenv/config";
 import { usersCol } from "./index.js";
 
-// ✏️  Change this to your real phone number (digits only, no spaces or +)
+// Change this to your real phone number (digits only, no spaces or +)
 const ADMIN_PHONE = process.env.ADMIN_PHONE || "9344075202";
 const ADMIN_NAME  = process.env.ADMIN_NAME  || "Admin";
 
@@ -12,12 +12,12 @@ async function createAdmin() {
   const existing = await usersCol.where("phoneNumber", "==", cleanPhone).limit(1).get();
   if (!existing.empty) {
     const doc = existing.docs[0];
-    console.log(`⚠️  User already exists for ${cleanPhone} (id: ${doc.id}, role: ${doc.data().role})`);
+    console.log(`[WARN] User already exists for ${cleanPhone} (id: ${doc.id}, role: ${doc.data().role})`);
     if (doc.data().role !== "admin") {
       await doc.ref.update({ role: "admin", verificationStatus: "approved" });
-      console.log("✅  Upgraded to admin.");
+      console.log("[INFO] Upgraded to admin.");
     } else {
-      console.log("✅  Already an admin. Nothing to do.");
+      console.log("[INFO] Already an admin. Nothing to do.");
     }
     process.exit(0);
   }
@@ -33,12 +33,12 @@ async function createAdmin() {
   };
 
   await ref.set(adminUser);
-  console.log("✅  Admin user created:");
+  console.log("[INFO] Admin user created:");
   console.log(JSON.stringify(adminUser, null, 2));
   process.exit(0);
 }
 
 createAdmin().catch(err => {
-  console.error("❌ Failed:", err.message);
+  console.error("[ERROR] Failed:", err.message);
   process.exit(1);
 });

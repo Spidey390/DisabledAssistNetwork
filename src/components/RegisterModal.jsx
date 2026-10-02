@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { CheckCircle2, HeartHandshake, Home } from "lucide-react";
+import { CheckCircle2, HeartHandshake, Home, AlertTriangle, Check, X } from "lucide-react";
 
 export const SKILL_OPTIONS = [
   "Health & Medicine",
@@ -114,16 +114,16 @@ export default function RegisterModal({ onClose, onRegisterSuccess }) {
           <h3 className="text-xl font-bold font-serif">Register Custom Community Profile</h3>
           <button
             onClick={onClose}
-            className="text-white/80 hover:text-white transition-colors text-2xl font-bold focus:outline-none"
+            className="text-white/80 hover:text-white transition-colors focus:outline-none p-1 cursor-pointer"
             aria-label="Close">
-            ×
+            <X size={20} />
           </button>
         </div>
 
         <form onSubmit={handleSubmit} className="p-6 space-y-5 max-h-[75vh] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           {error &&
             <div className="bg-red-50 border-l-4 border-red-500 text-red-950 p-4 rounded-r-xl text-sm font-semibold flex items-center gap-2">
-              <span>⚠️</span>
+              <AlertTriangle size={18} className="text-red-600 shrink-0" />
               <span>{error}</span>
             </div>
           }
@@ -170,8 +170,8 @@ export default function RegisterModal({ onClose, onRegisterSuccess }) {
 
           {otpSent && (
             <p className="text-xs font-semibold text-emerald-700 flex items-center gap-1.5 animate-fade-in mt-1">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span>✓ OTP sent to {phoneNumber} — check your messages.</span>
+              <Check size={14} className="text-emerald-600 shrink-0" />
+              <span>OTP sent to {phoneNumber} — check your messages.</span>
             </p>
           )}
 
@@ -228,8 +228,8 @@ export default function RegisterModal({ onClose, onRegisterSuccess }) {
                 Enter 6-Digit OTP Code
               </label>
               {otpSent && (
-                <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-                  ✓ OTP Generated & Ready
+                <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200 inline-flex items-center gap-1">
+                  <Check size={12} /> OTP Generated & Ready
                 </span>
               )}
             </div>

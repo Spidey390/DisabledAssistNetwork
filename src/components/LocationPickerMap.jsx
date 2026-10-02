@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { AlertCircle, Compass, LocateFixed, MapPin } from "lucide-react";
+import { AlertCircle, AlertTriangle, Compass, LocateFixed, MapPin, Loader2 } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext.jsx";
 
 const FALLBACK_LOCATION = { lat: 12.9716, lng: 77.5946 };
@@ -262,7 +262,7 @@ export default function LocationPickerMap({
 
       {geoError && (
         <p className="text-xs text-amber-800 font-bold bg-amber-50 p-3 rounded-xl border border-amber-200 flex items-center gap-1.5">
-          <span>⚠️</span>
+          <AlertTriangle size={15} className="text-amber-700 shrink-0" />
           <span>{geoError}</span>
         </p>
       )}
@@ -270,7 +270,7 @@ export default function LocationPickerMap({
       <div className="relative w-full h-72 rounded-2xl overflow-hidden border border-gray-300 shadow-xs bg-slate-100">
         {leafletStatus !== "ready" && (
           <div className="absolute inset-0 flex items-center justify-center bg-white/90 backdrop-blur-xs text-xs font-bold text-[#263c2e] gap-2 z-10 px-5 text-center">
-            {isMapUnavailable ? <AlertCircle size={17} className="text-red-500" /> : <span className="animate-spin text-base">🌐</span>}
+            {isMapUnavailable ? <AlertCircle size={17} className="text-red-500" /> : <Loader2 size={17} className="animate-spin text-[#263c2e]" />}
             <span>{isMapUnavailable ? "Map unavailable." : "Loading Google Maps..."}</span>
           </div>
         )}
@@ -278,7 +278,7 @@ export default function LocationPickerMap({
       </div>
 
       <p className="text-xs font-semibold text-gray-500 text-center flex items-center justify-center gap-1.5">
-        <span>📍</span>
+        <MapPin size={14} className="text-emerald-700 shrink-0" />
         <span>Drag map pointer or click anywhere on Google Maps to fine-tune your location.</span>
       </p>
     </div>

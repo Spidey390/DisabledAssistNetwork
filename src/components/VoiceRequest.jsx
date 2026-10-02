@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback } from "react";
-import { Mic, MicOff, Check, RotateCcw } from "lucide-react";
+import { Mic, MicOff, Check, RotateCcw, AlertTriangle } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext.jsx";
 
 // Check for browser support
@@ -132,8 +132,9 @@ export default function VoiceRequest({ onTranscript, currentText }) {
 
       {/* Error message */}
       {error && (
-        <div className="voice-error">
-          ⚠️ {error}
+        <div className="voice-error flex items-center gap-1.5">
+          <AlertTriangle size={16} className="text-red-500 shrink-0" />
+          <span>{error}</span>
         </div>
       )}
 

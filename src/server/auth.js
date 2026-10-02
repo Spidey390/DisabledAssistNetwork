@@ -192,7 +192,7 @@ async function sendFast2SMS(toPhone, otpCode) {
   const apiKey = process.env.FAST2SMS_API_KEY;
 
   if (!apiKey) {
-    console.warn("⚠️ Fast2SMS API key missing in .env");
+    console.warn("[WARN] Fast2SMS API key missing in .env");
     return { success: false, reason: "api_key_missing" };
   }
 
@@ -216,14 +216,14 @@ async function sendFast2SMS(toPhone, otpCode) {
 
     const data = await res.json();
     if (data.return === true) {
-      console.log(`📱 [FAST2SMS DELIVERED] OTP => ${mobileNumber}`);
+      console.log(`[FAST2SMS DELIVERED] OTP => ${mobileNumber}`);
       return { success: true };
     } else {
-      console.error("📲 [Fast2SMS Error]", data);
+      console.error("[Fast2SMS Error]", data);
       return { success: false, error: JSON.stringify(data) };
     }
   } catch (err) {
-    console.error("📲 [Fast2SMS Exception]", err.message);
+    console.error("[Fast2SMS Exception]", err.message);
     return { success: false, error: err.message };
   }
 }
@@ -248,7 +248,7 @@ authRouter.post("/send-otp", async (req, res) => {
   const expiresAt = Date.now() + 5 * 60 * 1000; // Valid for 5 minutes
 
   otpStore.set(cleanPhone, { otpCode, expiresAt, attempts: 0 });
-  console.log(`🔐 [FAST2SMS REAL OTP] Generated for ${phoneNumber} => Code: ${otpCode}`);
+  console.log(`[FAST2SMS REAL OTP] Generated for ${phoneNumber} => Code: ${otpCode}`);
 
   // Dispatch SMS via Fast2SMS
   const smsResult = await sendFast2SMS(phoneNumber, otpCode);
@@ -256,7 +256,7 @@ authRouter.post("/send-otp", async (req, res) => {
   if (!smsResult.success) {
     // No API key — dev/testing mode: return code in response
     if (smsResult.reason === "api_key_missing") {
-      console.log(`\n${"─".repeat(50)}\n💡 [DEV MODE] OTP for ${phoneNumber}: ${otpCode}\n${"─".repeat(50)}\n`);
+      console.log(`\n${"─".repeat(50)}\n[DEV MODE] OTP for ${phoneNumber}: ${otpCode}\n${"─".repeat(50)}\n`);
       return res.json({
         success: true,
         smsWarning: "no_api_key",
@@ -266,7 +266,7 @@ authRouter.post("/send-otp", async (req, res) => {
       });
     }
     // SMS delivery failed (e.g. invalid number) — print OTP to server terminal
-    console.log(`\n${"═".repeat(50)}\n🔑 [OTP FALLBACK] SMS failed for ${phoneNumber}\n   CODE: ${otpCode}  (valid 5 min)\n   Reason: ${smsResult.error}\n${"═".repeat(50)}\n`);
+    console.log(`\n${"═".repeat(50)}\n[OTP FALLBACK] SMS failed for ${phoneNumber}\n   CODE: ${otpCode}  (valid 5 min)\n   Reason: ${smsResult.error}\n${"═".repeat(50)}\n`);
     return res.json({
       success: true,
       smsWarning: smsResult.error,

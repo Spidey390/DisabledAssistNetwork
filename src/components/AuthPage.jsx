@@ -16,8 +16,12 @@ import {
   CheckCircle2,
   Shield,
   HelpCircle,
-  Home } from
-"lucide-react";
+  Home,
+  AlertTriangle,
+  Check,
+  Lightbulb,
+  Monitor
+} from "lucide-react";
 
 export const SKILL_OPTIONS = [
   "Health & Medicine",
@@ -304,8 +308,9 @@ export default function AuthPage({ onAuthSuccess, onBackToHome, initialTab = "lo
               </div>
 
               {loginError &&
-                <div className="bg-red-50 border-l-4 border-red-500 text-red-950 p-4 rounded-r-xl text-sm font-semibold">
-                  ⚠️ {loginError}
+                <div className="bg-red-50 border-l-4 border-red-500 text-red-950 p-4 rounded-r-xl text-sm font-semibold flex items-center gap-2">
+                  <AlertTriangle size={18} className="text-red-600 shrink-0" />
+                  <span>{loginError}</span>
                 </div>
               }
               <form onSubmit={handleLoginSubmit} className="space-y-4">
@@ -341,18 +346,20 @@ export default function AuthPage({ onAuthSuccess, onBackToHome, initialTab = "lo
 
                 {loginOtpSent && !loginSmsWarning && (
                   <p className="text-xs font-semibold text-emerald-700 flex items-center gap-1.5 animate-fade-in mt-1">
-                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span>✓ OTP sent to {loginPhone} — check your messages.</span>
+                    <Check size={14} className="text-emerald-600 shrink-0" />
+                    <span>OTP sent to {loginPhone} — check your messages.</span>
                   </p>
                 )}
                 {loginSmsWarning && loginFallbackOtp && (
-                  <p className="text-[11px] font-medium text-amber-800 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 mt-1">
-                    💡 No SMS key set — Testing Code: <strong className="font-mono tracking-widest">{loginFallbackOtp}</strong>
+                  <p className="text-[11px] font-medium text-amber-800 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 mt-1 flex items-center gap-1.5">
+                    <Lightbulb size={14} className="text-amber-700 shrink-0" />
+                    <span>No SMS key set — Testing Code: <strong className="font-mono tracking-widest">{loginFallbackOtp}</strong></span>
                   </p>
                 )}
                 {loginSmsWarning && !loginFallbackOtp && (
-                  <p className="text-[11px] font-medium text-amber-800 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 mt-1">
-                    🖥️ SMS could not be delivered — check your <strong>server terminal</strong> for the OTP code.
+                  <p className="text-[11px] font-medium text-amber-800 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 mt-1 flex items-center gap-1.5">
+                    <Monitor size={14} className="text-amber-700 shrink-0" />
+                    <span>SMS could not be delivered — check your <strong>server terminal</strong> for the OTP code.</span>
                   </p>
                 )}
 
@@ -362,8 +369,8 @@ export default function AuthPage({ onAuthSuccess, onBackToHome, initialTab = "lo
                       Enter 6-Digit OTP Code
                     </label>
                     {loginOtpSent && (
-                      <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-                        ✓ Ready
+                      <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200 inline-flex items-center gap-1">
+                        <Check size={12} /> Ready
                       </span>
                     )}
                   </div>
@@ -402,7 +409,7 @@ export default function AuthPage({ onAuthSuccess, onBackToHome, initialTab = "lo
 
               {signupError &&
                 <div className="bg-red-50 border-l-4 border-red-500 text-red-950 p-4 rounded-r-xl text-sm font-semibold flex items-center gap-2">
-                  <span>⚠️</span>
+                  <AlertTriangle size={18} className="text-red-600 shrink-0" />
                   <span>{signupError}</span>
                 </div>
               }
@@ -462,13 +469,14 @@ export default function AuthPage({ onAuthSuccess, onBackToHome, initialTab = "lo
 
                 {signupOtpSent && !signupSmsWarning && (
                   <p className="text-xs font-semibold text-emerald-700 flex items-center gap-1.5 animate-fade-in mt-1">
-                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span>✓ OTP sent to {signupPhone} — check your messages.</span>
+                    <Check size={14} className="text-emerald-600 shrink-0" />
+                    <span>OTP sent to {signupPhone} — check your messages.</span>
                   </p>
                 )}
                 {signupSmsWarning && signupFallbackOtp && (
-                  <p className="text-[11px] font-medium text-amber-800 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 mt-1">
-                    💡 No SMS key set — Testing Code: <strong className="font-mono tracking-widest">{signupFallbackOtp}</strong>
+                  <p className="text-[11px] font-medium text-amber-800 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 mt-1 flex items-center gap-1.5">
+                    <Lightbulb size={14} className="text-amber-700 shrink-0" />
+                    <span>No SMS key set — Testing Code: <strong className="font-mono tracking-widest">{signupFallbackOtp}</strong></span>
                   </p>
                 )}
 
@@ -533,8 +541,8 @@ export default function AuthPage({ onAuthSuccess, onBackToHome, initialTab = "lo
                       Enter 6-Digit OTP Code
                     </label>
                     {signupOtpSent && (
-                      <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-                        ✓ OTP Generated & Ready
+                      <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200 inline-flex items-center gap-1">
+                        <Check size={12} /> OTP Generated & Ready
                       </span>
                     )}
                   </div>

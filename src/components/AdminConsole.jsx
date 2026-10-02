@@ -6,8 +6,12 @@ import {
   Flag as FlagIcon,
   FileText,
   Trash2,
-  Search } from
-"lucide-react";
+  Search,
+  AlertTriangle,
+  CheckCircle2,
+  Info,
+  X
+} from "lucide-react";
 
 export default function AdminConsole({ user }) {
   const { t } = useLanguage();
@@ -460,8 +464,8 @@ export default function AdminConsole({ user }) {
                             <td className="py-3 px-4 text-gray-600 italic">"{f.flag.reason}"</td>
                             <td className="py-3 px-4">
                               {isBreached && f.flag.status === "pending" ?
-                          <span className="bg-red-100 text-red-700 border border-red-200 text-[10px] font-black px-2 py-0.5 rounded tracking-wider uppercase">
-                                  🚨 SLA Warn (&gt;48h)
+                          <span className="bg-red-100 text-red-700 border border-red-200 text-[10px] font-black px-2 py-0.5 rounded tracking-wider uppercase inline-flex items-center gap-1">
+                                  <AlertTriangle size={12} /> SLA Warn (&gt;48h)
                                 </span> :
                           <span className="text-emerald-600 text-xs font-bold">Within SLA</span>
                           }
@@ -487,7 +491,7 @@ export default function AdminConsole({ user }) {
                                 </>
                           }
                               {f.flag.status === "resolved" &&
-                          <span className="text-emerald-600 text-xs font-bold">Resolved ✅</span>
+                          <span className="text-emerald-600 text-xs font-bold inline-flex items-center gap-1">Resolved <CheckCircle2 size={14} /></span>
                           }
                             </td>
                           </tr>);
@@ -552,8 +556,9 @@ export default function AdminConsole({ user }) {
               }
               </div>
 
-              <p className="text-xs text-gray-500 leading-normal bg-gray-50 p-3 rounded-lg border border-gray-200">
-                ℹ️ DATA RETENTION POLICY: Audit logs are retained for <strong>12 months</strong> as per standard compliance guidelines, after which they are archived/purged automatically. Intent aligns with the India DPDP Act 2023.
+              <p className="text-xs text-gray-500 leading-normal bg-gray-50 p-3 rounded-lg border border-gray-200 flex items-start gap-2">
+                <Info size={16} className="text-indigo-600 shrink-0 mt-0.5" />
+                <span>DATA RETENTION POLICY: Audit logs are retained for <strong>12 months</strong> as per standard compliance guidelines, after which they are archived/purged automatically. Intent aligns with the India DPDP Act 2023.</span>
               </p>
             </div>
           }
@@ -599,9 +604,10 @@ export default function AdminConsole({ user }) {
                     </div>
                   </div>
 
-                  <div className="bg-white p-3.5 rounded-lg border border-red-200 shadow-sm">
+                  <div className="bg-white p-3.5 rounded-lg border border-red-200 shadow-sm flex items-start gap-2">
+                    <AlertTriangle size={16} className="text-red-600 shrink-0 mt-0.5" />
                     <p className="text-xs text-red-700 leading-normal font-medium">
-                      ⚠️ CRITICAL IMPACT: Executing erasure will permanently cascade delete all stored locations tied to
+                      CRITICAL IMPACT: Executing erasure will permanently cascade delete all stored locations tied to
                       this user, and permanently scramble the Name and Phone Number strings in PostgreSQL. This action is{" "}
                       <strong>100% irreversible</strong>.
                     </p>
@@ -630,7 +636,7 @@ export default function AdminConsole({ user }) {
                 onClick={() => setSelectedUserForReview(null)}
                 className="text-gray-400 hover:text-gray-700 transition-colors p-1"
               >
-                ✕
+                <X size={20} />
               </button>
             </div>
             

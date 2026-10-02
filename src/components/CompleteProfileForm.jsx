@@ -13,7 +13,12 @@ import {
   ShieldCheck,
   Upload,
   User,
-  UsersRound
+  UsersRound,
+  HeartHandshake,
+  Home,
+  AlertTriangle,
+  CheckCircle2,
+  Plus
 } from "lucide-react";
 
 export default function CompleteProfileForm({ user, onComplete }) {
@@ -167,12 +172,9 @@ export default function CompleteProfileForm({ user, onComplete }) {
         </div>
 
         <div className="flex items-center gap-2">
-          <span className={`px-3 py-1 rounded-full text-xs font-bold border ${
-            isVolunteer
-              ? "bg-emerald-50 text-emerald-800 border-emerald-200"
-              : "bg-emerald-50 text-emerald-800 border-emerald-200"
-          }`}>
-            {isVolunteer ? "🤝 Volunteer Profile" : "🏠 Senior Resident Profile"}
+          <span className="px-3 py-1 rounded-full text-xs font-bold border bg-emerald-50 text-emerald-800 border-emerald-200 inline-flex items-center gap-1.5">
+            {isVolunteer ? <HeartHandshake size={14} className="text-emerald-700" /> : <Home size={14} className="text-emerald-700" />}
+            <span>{isVolunteer ? "Volunteer Profile" : "Senior Resident Profile"}</span>
           </span>
         </div>
       </header>
@@ -192,7 +194,7 @@ export default function CompleteProfileForm({ user, onComplete }) {
 
         {error && (
           <div className="bg-red-50 border-l-4 border-red-500 text-red-950 p-4 rounded-2xl text-sm font-semibold flex items-center gap-2.5 shadow-xs">
-            <span className="text-lg">⚠️</span>
+            <AlertTriangle size={18} className="text-red-500 shrink-0" />
             <span>{error}</span>
           </div>
         )}
@@ -316,13 +318,13 @@ export default function CompleteProfileForm({ user, onComplete }) {
               {/* Age Restriction Alert Banners */}
               {!isVolunteer && age !== "" && !isDisability && parseInt(age, 10) <= 58 && (
                 <div className="sm:col-span-2 p-3.5 bg-red-50 border border-red-200 rounded-xl text-xs font-bold text-red-600 flex items-center gap-2">
-                  <span>⚠️</span>
+                  <AlertTriangle size={16} className="text-red-500 shrink-0" />
                   <span>Not eligible: Senior Resident registration is allowed for individuals above 58 years of age only.</span>
                 </div>
               )}
               {!isVolunteer && age !== "" && isDisability && parseInt(age, 10) <= 58 && (
                 <div className="sm:col-span-2 p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-xs font-bold text-emerald-800 flex items-center gap-2">
-                  <span>✅</span>
+                  <CheckCircle2 size={16} className="text-emerald-600 shrink-0" />
                   <span>Age restriction waived for Person with Disability.</span>
                 </div>
               )}
@@ -460,13 +462,14 @@ export default function CompleteProfileForm({ user, onComplete }) {
                           key={skill}
                           type="button"
                           onClick={() => toggleSkill(skill)}
-                          className={`py-2.5 px-4 rounded-xl text-xs font-bold transition-all cursor-pointer border ${
+                          className={`py-2.5 px-4 rounded-xl text-xs font-bold transition-all cursor-pointer border inline-flex items-center gap-1.5 ${
                             active
                               ? "bg-[#263c2e] text-white border-[#263c2e] shadow-sm"
                               : "bg-white text-gray-700 border-gray-200 hover:border-emerald-300 hover:bg-emerald-50/50"
                           }`}
                         >
-                          {active ? `✓ ${skill}` : `+ ${skill}`}
+                          {active ? <Check size={13} className="shrink-0" /> : <Plus size={13} className="shrink-0" />}
+                          <span>{skill}</span>
                         </button>
                       );
                     })}
@@ -567,7 +570,8 @@ export default function CompleteProfileForm({ user, onComplete }) {
                     />
                     {identityProof && (
                       <p className="text-xs text-emerald-800 font-bold mt-2.5 flex items-center gap-1.5 bg-emerald-50 p-2.5 rounded-xl border border-emerald-200">
-                        <span>✓</span> Selected file: {identityProof.name}
+                        <CheckCircle2 size={14} className="text-emerald-600 shrink-0" />
+                        <span>Selected file: {identityProof.name}</span>
                       </p>
                     )}
                   </div>
