@@ -1,0 +1,91 @@
+utterance,language,true_category,true_urgency,llm_predicted_category,llm_predicted_urgency,llm_latency_ms,rule_predicted_category,rule_predicted_urgency,rule_latency_ms
+Need blood pressure tablets from Apollo pharmacy urgently,English,Health & Medicine,High,Health & Medicine,High,185.9,Health & Medicine,High,2.61
+Could someone buy 2 liters of milk and bread from the grocery store?,English,Shopping & Essentials,Medium,Shopping & Essentials,Medium,140.7,Shopping & Essentials,Medium,4.48
+"Need cooked lunch sent over today, cannot stand up to cook",English,Food & Meals,Medium,Food & Meals,Medium,211.3,Food & Meals,Medium,3.51
+Kitchen sink pipe is leaking water all over the floor,English,Home Help,High,Home Help,High,212.7,Home Help,Medium,3.13
+Need a ride to the eye clinic tomorrow morning at 10 AM,English,Transportation,Medium,Transportation,Medium,165.3,Transportation,Medium,3.09
+Unable to connect my smartphone to home WiFi,English,Technology Help,Low,Technology Help,Low,177.6,Technology Help,Medium,3.34
+"Feeling lonely, looking for someone to take an evening walk in the park",English,Companionship,Low,Companionship,Low,165.9,Companionship,Medium,2.16
+"Fell down from wheelchair and unable to get up, need fast help",English,Urgent Help,High,Urgent Help,High,167.4,Urgent Help,High,3.27
+Insulin injection refill needed from nearby chemist,English,Health & Medicine,High,Health & Medicine,High,155.6,Health & Medicine,Medium,2.56
+Need fresh vegetables bought from the weekly market,English,Shopping & Essentials,Medium,Shopping & Essentials,Medium,181.4,Shopping & Essentials,Medium,2.41
+Looking for someone to bring hot dinner,English,Food & Meals,Medium,Food & Meals,Medium,147.5,Food & Meals,Medium,2.78
+"Bathroom ceiling light bulb fused, need assistance replacing it",English,Home Help,Low,Home Help,Low,170.0,Home Help,Medium,3.83
+Need car ride to physiotherapy center on Friday,English,Transportation,Medium,Transportation,Medium,161.9,Transportation,Medium,3.72
+Need help setting up WhatsApp on new tablet,English,Technology Help,Low,Technology Help,Low,174.8,Health & Medicine,Medium,3.41
+Would love someone to chat with over tea this afternoon,English,Companionship,Low,Companionship,Low,139.7,Companionship,Medium,3.29
+"Severe chest pain and dizziness, need immediate neighbor assistance",English,Urgent Help,High,Urgent Help,High,168.6,Urgent Help,High,3.3
+"Eye drops bottle is empty, need prescription pickup",English,Health & Medicine,Medium,Health & Medicine,Medium,160.9,Shopping & Essentials,Medium,3.55
+Need laundry detergent and rice pack from supermarket,English,Shopping & Essentials,Medium,Shopping & Essentials,Medium,164.0,Shopping & Essentials,Medium,4.28
+"Need door latch repaired, stuck from outside",English,Home Help,Medium,Home Help,Medium,148.7,Home Help,Medium,3.01
+"Wheelchair tire puncture, need transport to clinic",English,Transportation,High,Transportation,High,163.2,Transportation,Medium,2.48
+Need arthritis pain balm from medical store,English,Health & Medicine,Medium,Health & Medicine,Medium,172.2,Health & Medicine,Medium,3.55
+Please buy a dozen eggs and wheat flour,English,Shopping & Essentials,Medium,Shopping & Essentials,Medium,145.9,Shopping & Essentials,Medium,3.87
+Diabetic meal delivery needed for elderly couple,English,Food & Meals,Medium,Food & Meals,Medium,191.4,Food & Meals,Medium,3.86
+Main water valve handle is broken and leaking,English,Home Help,High,Home Help,High,196.0,Home Help,Medium,3.84
+Need wheelchair-accessible van to dialysis appointment,English,Transportation,High,Transportation,High,164.8,Transportation,Medium,4.31
+Need help configuring zoom app for grandchild call,English,Technology Help,Low,Technology Help,Low,162.0,Technology Help,Medium,3.41
+Looking for a volunteer to read newspapers together,English,Companionship,Low,Companionship,Low,187.4,Companionship,Medium,4.47
+"Breathing difficulty and asthma inhaler empty, please assist",English,Urgent Help,High,Urgent Help,High,186.3,Urgent Help,High,4.38
+Need band-aids and antiseptic lotion from chemist,English,Health & Medicine,Medium,Health & Medicine,Medium,180.1,Health & Medicine,Medium,4.29
+Need to get drinking water cans from distribution point,English,Shopping & Essentials,Medium,Shopping & Essentials,Medium,169.5,Shopping & Essentials,Medium,3.36
+அப்பல்லோ மருந்தகத்தில் இருந்து ரத்த அழுத்த மாத்திரை வாங்கி வர வேண்டும்,Tamil,Health & Medicine,High,Health & Medicine,High,176.9,Shopping & Essentials,Medium,3.26
+மளிகை கடையில் இருந்து இரண்டு பாக்கெட் பால் மற்றும் ரொட்டி வாங்கி தாருங்கள்,Tamil,Shopping & Essentials,Medium,Shopping & Essentials,Medium,184.4,Shopping & Essentials,Medium,4.01
+"இன்று மதிய உணவு சமைக்க முடியவில்லை, சாப்பாடு தேவை",Tamil,Food & Meals,Medium,Food & Meals,Medium,166.6,Food & Meals,Medium,2.18
+"சமையலறை குழாயில் தண்ணீர் கசிகிறது, பிளம்பிங் உதவி தேவை",Tamil,Home Help,High,Home Help,High,172.5,Shopping & Essentials,Medium,3.76
+நாளை காலை கண் மருத்துவமனைக்கு செல்ல வண்டி உதவி தேவை,Tamil,Transportation,Medium,Transportation,Medium,186.4,Transportation,Medium,3.87
+"செல்போனில் வைஃபை இணைக்க முடியவில்லை, உதவி செய்யவும்",Tamil,Technology Help,Low,Technology Help,Low,168.3,Shopping & Essentials,Medium,4.43
+மாலையில் பூங்காவில் நடைபயிற்சி செல்ல துணை தேவை,Tamil,Companionship,Low,Companionship,Low,177.2,Companionship,Medium,3.93
+"சக்கர நாற்காலியில் இருந்து கீழே விழுந்துவிட்டேன், உடனே உதவி வேண்டும்",Tamil,Urgent Help,High,Urgent Help,High,158.4,Urgent Help,High,4.13
+"இன்சுலின் மருந்து தீர்ந்துவிட்டது, மருந்தகத்தில் இருந்து வாங்கி வரவும்",Tamil,Health & Medicine,High,Health & Medicine,High,167.7,Health & Medicine,Medium,3.89
+சந்தையில் இருந்து காய்கறிகள் வாங்கி வர வேண்டும்,Tamil,Shopping & Essentials,Medium,Shopping & Essentials,Medium,169.3,Shopping & Essentials,Medium,3.48
+இரவு உணவு வாங்கி வர ஆள் தேவை,Tamil,Food & Meals,Medium,Food & Meals,Medium,167.6,Food & Meals,Medium,4.29
+"குளியலறை மின்விளக்கு பழுதாகிவிட்டது, மாற்ற வேண்டும்",Tamil,Home Help,Low,Home Help,Low,155.2,Home Help,Medium,3.24
+மருத்துவமனைக்கு செல்ல ஆட்டோ அல்லது கார் உதவி தேவை,Tamil,Transportation,Medium,Transportation,Medium,177.4,Shopping & Essentials,Medium,3.47
+"போனில் வாட்ஸ்அப் வேலை செய்யவில்லை, சரிபார்க்க வேண்டும்",Tamil,Technology Help,Low,Technology Help,Low,184.5,Home Help,Medium,4.31
+"பேசுவதற்கு ஆள் இல்லாமல் தனிமையாக உணர்கிறேன், யாராவது வர முடியுமா?",Tamil,Companionship,Low,Companionship,Low,161.9,Companionship,Medium,4.09
+"திடீரென நெஞ்சு வலி மற்றும் மயக்கம் வருகிறது, அவசரம்",Tamil,Urgent Help,High,Urgent Help,High,190.2,Urgent Help,High,3.99
+"கண் மருந்து தீர்ந்துவிட்டது, டாக்டர் சீட்டு உள்ளது வாங்கி வாருங்கள்",Tamil,Health & Medicine,Medium,Health & Medicine,Medium,173.3,Health & Medicine,Medium,3.43
+கடைக்கு சென்று அரிசி மற்றும் சர்க்கரை வாங்கி வர வேண்டும்,Tamil,Shopping & Essentials,Medium,Shopping & Essentials,Medium,182.4,Shopping & Essentials,Medium,2.47
+வீட்டு கதவு பூட்டு பழுது பார்க்க வேண்டும்,Tamil,Home Help,Medium,Home Help,Medium,163.7,Home Help,Medium,3.72
+"நடக்க முடியவில்லை, அவசரமாக கிளினிக் செல்ல வாகனம் வேண்டும்",Tamil,Transportation,High,Transportation,High,177.5,Transportation,Medium,3.59
+முழங்கால் வலிக்கு தைலம் மருந்து கடையில் இருந்து வாங்கி வாருங்கள்,Tamil,Health & Medicine,Medium,Health & Medicine,Medium,181.6,Health & Medicine,Medium,4.29
+வீட்டிற்கு குடிநீர் கேன் வாங்கி வர ஆள் வேண்டும்,Tamil,Shopping & Essentials,Medium,Shopping & Essentials,Medium,164.4,Shopping & Essentials,Medium,2.17
+வயதானவர்களுக்கு ஏற்ற காரமில்லாத மதிய சாப்பாடு தேவை,Tamil,Food & Meals,Medium,Food & Meals,Medium,154.6,Food & Meals,Medium,3.8
+"வீட்டு மின்விசிறி சுழலவில்லை, எலக்ட்ரீசியன் உதவி தேவை",Tamil,Home Help,Medium,Home Help,Medium,152.8,Home Help,Medium,3.64
+டயாலிசிஸ் சிகிச்சைக்கு மருத்துவமனை செல்ல ஆட்டோ உதவி தேவை,Tamil,Transportation,High,Transportation,High,173.0,Shopping & Essentials,Medium,3.49
+"டிவி ரிமோட் வேலை செய்யவில்லை, சரிபார்த்து தாருங்கள்",Tamil,Technology Help,Low,Technology Help,Low,171.9,Home Help,Medium,4.33
+மாலை நேரத்தில் சிறிது நேரம் பேச நல்ல துணை வேண்டும்,Tamil,Companionship,Low,Companionship,Low,180.5,Companionship,Medium,3.32
+"திடீரென மூச்சு திணறல் மற்றும் நெஞ்சு வலி, அவசரம்",Tamil,Urgent Help,High,Urgent Help,High,176.9,Urgent Help,High,4.42
+காய்ச்சல் மாத்திரை பாராசிட்டமால் வாங்கி வரவும்,Tamil,Health & Medicine,Medium,Health & Medicine,Medium,178.9,Health & Medicine,Medium,3.99
+மளிகை கடையில் எண்ணெய் மற்றும் பருப்பு வாங்கி வாருங்கள்,Tamil,Shopping & Essentials,Medium,Shopping & Essentials,Medium,184.3,Shopping & Essentials,Medium,3.31
+Apollo pharmacy la irunthu BP tablet vaangi thanga please,Code-Mixed,Health & Medicine,High,Health & Medicine,High,185.8,Health & Medicine,Medium,2.42
+Supermarket poi 2 packet milk and bread vaangi thanga,Code-Mixed,Shopping & Essentials,Medium,Shopping & Essentials,Medium,162.0,Shopping & Essentials,Medium,4.03
+"Innaiku cook panna mudila, afternoon lunch kedaikuma",Code-Mixed,Food & Meals,Medium,Food & Meals,Medium,156.7,Food & Meals,Medium,4.06
+Kitchen tap repair panna plumber help venum,Code-Mixed,Home Help,High,Home Help,High,176.8,Home Help,Medium,3.9
+Hospital poga car drive panna aal venum,Code-Mixed,Transportation,Medium,Transportation,Medium,187.8,Health & Medicine,Medium,2.59
+"Mobile phone la WiFi connect aagala, konjam paathu thanga",Code-Mixed,Technology Help,Low,Technology Help,Low,168.8,Technology Help,Medium,3.52
+"Romba bore adikuthu, evening walk poga companion thevai",Code-Mixed,Companionship,Low,Companionship,Low,192.7,Companionship,Medium,2.88
+"Emergency, keela vizhunthuten yenthirika mudila, fast aa vaanga",Code-Mixed,Urgent Help,High,Urgent Help,High,169.5,Urgent Help,High,4.47
+Near chemist shop la irunthu insulin injection vanganum,Code-Mixed,Health & Medicine,High,Health & Medicine,High,171.9,Health & Medicine,Medium,2.21
+Market poi fresh vegetables vangi vara mudiyuma,Code-Mixed,Shopping & Essentials,Medium,Shopping & Essentials,Medium,186.4,Shopping & Essentials,Medium,2.99
+Night dinner parcels vaangi thara helper thevai,Code-Mixed,Food & Meals,Medium,Food & Meals,Medium,165.1,Food & Meals,Medium,2.67
+"Bathroom tube light fuse aayiduchu, fix panna mudiyuma",Code-Mixed,Home Help,Low,Home Help,Low,164.4,Home Help,Medium,3.92
+Tomorrow morning doctor appointment ku ride thevai,Code-Mixed,Transportation,Medium,Transportation,Medium,177.0,Health & Medicine,Medium,2.3
+Smartphone la new app download panna tech support venum,Code-Mixed,Technology Help,Low,Technology Help,Low,190.3,Technology Help,Medium,3.54
+Tea time la pesurathuku yaaravathu friend thevai,Code-Mixed,Companionship,Low,Companionship,Low,193.2,Companionship,Medium,4.26
+Severe chest pain SOS help fast please,Code-Mixed,Urgent Help,High,Urgent Help,High,198.2,Urgent Help,High,3.07
+"Eye drops finish aayiduchu, medical shop poi vaanga mudiyuma",Code-Mixed,Health & Medicine,Medium,Health & Medicine,Medium,197.3,Shopping & Essentials,Medium,2.19
+Provisions store la irunthu 5kg rice vanganum,Code-Mixed,Shopping & Essentials,Medium,Shopping & Essentials,Medium,182.5,Shopping & Essentials,Medium,3.99
+Door lock repair panna technician venum,Code-Mixed,Home Help,Medium,Home Help,Medium,167.2,Home Help,Medium,3.39
+"Wheelchair puncture aayiduchu, auto or transport help venum",Code-Mixed,Transportation,High,Transportation,High,166.2,Transportation,Medium,3.23
+Joint pain spray medical store la irunthu vaanga venum,Code-Mixed,Health & Medicine,Medium,Health & Medicine,Medium,174.9,Health & Medicine,Medium,3.0
+Supermarket la cooking oil and dhal vaangi thanga,Code-Mixed,Shopping & Essentials,Medium,Shopping & Essentials,Medium,156.1,Food & Meals,Medium,2.61
+Elderly diet food meals delivery needed today,Code-Mixed,Food & Meals,Medium,Food & Meals,Medium,162.6,Food & Meals,Medium,3.83
+Ceiling fan repair panna electrical helper thevai,Code-Mixed,Home Help,Medium,Home Help,Medium,179.6,Home Help,Medium,3.41
+Dialysis hospital visit ku cab ride help venum,Code-Mixed,Transportation,High,Transportation,High,183.7,Health & Medicine,Medium,4.45
+Phone la online payment GPay setup panna help venum,Code-Mixed,Technology Help,Low,Technology Help,Low,170.7,Technology Help,Medium,2.6
+Evening time konjam pesi walk panna companion venum,Code-Mixed,Companionship,Low,Companionship,Low,180.4,Companionship,Medium,2.84
+"Sudden fall in bathroom, please come immediately urgent",Code-Mixed,Urgent Help,High,Urgent Help,High,175.4,Urgent Help,High,3.86
+Fever paracetamol tablet chemist shop la vanganum,Code-Mixed,Health & Medicine,Medium,Health & Medicine,Medium,153.8,Health & Medicine,Medium,4.3
+Water can 20L delivery lift panna aal venum,Code-Mixed,Shopping & Essentials,Medium,Shopping & Essentials,Medium,155.8,Shopping & Essentials,Medium,3.98
