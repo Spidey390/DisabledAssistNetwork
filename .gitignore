@@ -11,3 +11,5 @@ private-uploads/
 service-account.json
 service-account*.json
 *-service-account.json
+
+.firebase/
